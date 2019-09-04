@@ -1,6 +1,24 @@
 <odoo>
   <data>
     <!-- explicit list view definition -->
+    <record model="ir.ui.view" id="pronostico_demanda.form">
+      <field name="name">pronostico_demanda form</field>
+      <field name="model">pronostico.demanda</field>
+      <field name="arch" type="xml">
+        <form>
+        <header>
+          <button string="CARGAR ARCHIVO" type="object" name="read_excel_"/>
+        </header>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="file" filename="name" widget="binary" />
+            <field name="tipo"/>
+          </group>
+        </sheet>
+      </form>
+      </field>
+    </record>
     
     <record model="ir.ui.view" id="pronostico_demanda.list">
       <field name="name">pronostico_demanda list</field>
@@ -9,45 +27,51 @@
         <tree>
           <field name="name"/>
           <field name="file"/>
-          <button string="do someting" type="object" name="read_excel_"/>
-          <!-- <field name="value2"/> -->
+          <field name="tipo"/>
         </tree>
       </field>
     </record>
+
+    <record model="ir.ui.view" id="datos1_graph">
+        <field name="name">datos1.graph</field>
+        <field name="model">datos1</field>
+        <field name="type">graph</field>
+        <field name="arch" type="xml">
+            <graph string="Graficas de Pruebas">
+                <field name="sexo" group="True"/>
+                <field name="edad" operator="+"/>
+            </graph>
+            </field>
+        </record>
+    
+
    
 
     <!-- actions opening views on models -->
     
     <record model="ir.actions.act_window" id="pronostico_demanda.action_window">
-      <field name="name">Load File</field>
+      <field name="name">Pronostico de Deamanda</field>
       <field name="type">ir.actions.act_window</field>
       <field name="res_model">pronostico.demanda</field>
       <field name="view_type">form</field>
-      <field name="view_mode">tree,form</field>
+      <field name="view_mode">tree,form,graph</field>
       <field name="help" type="html">
         <p class="o_view_nocontent_smiling_face">
           No hay nada
         </p>
       </field>
     </record>
-   
 
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="pronostico_demanda.action_server">
-      <field name="name">pronostico_demanda server</field>
-      <field name="model_id" ref="model_pronostico_demanda_pronostico_demanda"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
+
+    <record model="ir.actions.act_window" id="datos1_grafica">
+      <field name="name">Graficas Datos 1</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">datos1</field>
+      <field name="view_type">form</field>
+      <field name="view_mode">graph</field>
+      <field name="view_id" ref="datos1_graph"/>
     </record>
-    -->
-
+   
     <!-- Top menu item -->
     
     <menuitem name="Demanda" id="pronostico_demanda.menu_root" />
@@ -55,6 +79,7 @@
     <!-- menu categories -->
     
     <menuitem name="Lista" id="pronostico_demanda.menu_1" parent="pronostico_demanda.menu_root" action="pronostico_demanda.action_window"/>
+    <menuitem name="Graficas" id="pronostico_demanda.menu_2" parent="pronostico_demanda.menu_root" action="datos1_grafica"/>
     <!-- <menuitem name="Menu 2" id="pronostico_demanda.menu_2" parent="pronostico_demanda.menu_root"/> -->
    
     <!-- actions -->

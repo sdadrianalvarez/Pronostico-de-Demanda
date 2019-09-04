@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data>
+        <!-- datos 1 -->
+    <record model="ir.ui.view" id="datos1_graph">
+        <field name="name">datos1.graph</field>
+        <field name="model">datos1</field>
+        <field name="type">graph</field>
+        <field name="arch" type="xml">
+            <graph string="Graficas de Pruebas">
+                <field name="sexo" group="True"/>
+                <field name="edad" operator="+"/>
+            </graph>
+            </field>
+        </record>
+
+        <record model="ir.actions.act_window" id="pronostico_demanda.action_window">
+        <field name="name">Graficas Datos 1</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">datos1</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">graph</field>
+        <field name="view_id" ref="datos1_graph"/>
+        <field name="target">new</field>
+        </record>
+   <!-- fin datos 1 -->
+
+
+
+        
+    </data>
+</odoo>
