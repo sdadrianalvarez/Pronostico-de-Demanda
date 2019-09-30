@@ -8,8 +8,8 @@
         <field name="type">graph</field>
         <field name="arch" type="xml">
             <graph string="Graficas de Pruebas">
-                <field name="sexo" group="True"/>
-                <field name="edad" operator="+"/>
+                <field name="Categoria" group="True"/>
+                <field name="StockTotal" operator="+"/>
             </graph>
             </field>
         </record>

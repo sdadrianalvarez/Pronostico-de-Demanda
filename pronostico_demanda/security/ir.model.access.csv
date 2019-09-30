@@ -1,2 +1,4 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_pronostico_demanda_pronostico_demanda,pronostico_demanda.pronostico_demanda,model_pronostico_demanda_pronostico_demanda,,1,0,0,0
+access_pronostico_demanda_pronostico_demanda,pronostico.demanda.manager,model_pronostico_demanda,pronostico_demanda.group_manager,1,1,1,1
+access_pronostico_demanda_pronostico_demanda_user,pronostico.demanda,model_pronostico_demanda,pronostico_demanda.group_user,1,1,1,1
+access_pronostico_demanda_mrp,mrp.manager,model_mrp,pronostico_demanda.group_manager,1,1,1,1
